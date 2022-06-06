@@ -1,6 +1,6 @@
 import './ItemCount.css';
-import { useState, useEffect } from 'react';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
+import { useState} from 'react';
+
 
 export default function ItemCount({stock, initial}) {
 
