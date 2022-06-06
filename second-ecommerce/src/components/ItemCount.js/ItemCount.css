@@ -1,0 +1,40 @@
+.containerContador{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+.contador{
+    display: inline-flex;
+    justify-content: space-between;
+    border: solid 2px;
+    width: 20%;
+    border-radius:10px;
+}
+.numero{
+    font-size: 17px;
+    
+    
+}
+.mas ,.menos{
+    border: none;
+    border-radius: 10%;
+    margin: 1px;
+    height: 38px;
+    width: 40px;
+}
+.menos{
+    background-color: red;
+}
+.mas{
+    background-color: green;
+}
+
+.mas:hover{
+    background-color: rgb(2, 108, 2);
+}
+.menos:hover{
+    background-color: rgb(190, 4, 4);
+}

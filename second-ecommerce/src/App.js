@@ -6,12 +6,15 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 
 
 
+
+
 function App() {
   return (
     <>
       
       <NavBar />
       <ItemListContainer greeting="Aca va a ir el catálogo"/>
+      
     
     
     </>
