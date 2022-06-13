@@ -13,7 +13,7 @@ function App() {
     <>
       
       <NavBar />
-      <ItemListContainer greeting="Aca va a ir el catálogo"/>
+      <ItemListContainer />
       
     
     
