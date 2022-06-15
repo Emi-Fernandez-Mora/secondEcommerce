@@ -2,35 +2,23 @@ import { useState } from "react";
 import { useEffect } from "react";
 import ItemCount from "../../components/ItemCount.js/ItemCount";
 import ItemList from "../../components/ItemList/ItemList";
+import { getFetch } from "../../helpers/getFetch";
 
 
 
-export default function ItemListContainer() {
 
-  const [productos, setProductos] = useState([]);
 
-  const getFetch = async () =>{
-    try{
-      const queryFetch = await fetch('stock.json');
-      const queryFetchParse = await queryFetch.json();
-      setProductos(queryFetchParse.Productos);
-      
 
-    }catch(err){
-      console.log(err);
-    }
+export default function ItemListContainer({products}) {
 
-  }
+  const  [productos, setProductos] = useState([]);
 
   useEffect(()=>{
-    setTimeout (()=>{
-      getFetch();
-      console.log('demora 2 segs')
-    }, 1500)
-    
-    
-    
-  },[])
+    getFetch().then((res)=>{
+      setProductos(res)
+    })
+    console.log(productos)
+  },[productos])
 
   
   return (
