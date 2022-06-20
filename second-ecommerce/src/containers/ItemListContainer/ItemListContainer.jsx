@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import ItemCount from "../../components/ItemCount.js/ItemCount";
+import { useParams } from "react-router-dom";
 import ItemList from "../../components/ItemList/ItemList";
 import { getFetch } from "../../helpers/getFetch";
 
@@ -13,18 +13,34 @@ export default function ItemListContainer({products}) {
 
   const  [productos, setProductos] = useState([]);
 
+  const { categoriaId }= useParams()
+
   useEffect(()=>{
-    getFetch().then((res)=>{
-      setProductos(res)
-    })
-    console.log(productos)
-  },[productos])
+    if(categoriaId){
+
+      getFetch().then((res)=>{
+        /* setProductos(res.filter(productos.categoria === categoriaId)) */
+        setProductos(res.filter( productos => productos.categoria === categoriaId))
+        
+      })
+      .catch(console.log('error'))
+    }
+    else{
+      
+        getFetch().then((res)=>{
+          setProductos(res)
+        })
+        .catch(console.log('error'))
+       
+    }
+    
+  },[categoriaId])
 
   
   return (
     <>
       <ItemList productos={productos}/>
-      <ItemCount stock ="10" initial = '1' />
+      
       
       
     </>

@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Item({prod}) {
+
+  
   return (
     <>  
       <div className="card" style={{width: "18rem"}}>
@@ -8,7 +11,11 @@ function Item({prod}) {
                               <div className="card-body">
                                 <h5 className="card-title">{`${prod.nombre} - ${prod.categoria}`}</h5>
                                 <p className="card-text">{`Llevate tu ${prod.nombre}, te llega mañana`}</p>
-                                <a href="#" className="btn btn-primary">Detalles del producto</a>
+                                
+                                <Link to={`/detalle/${prod.id}`}>
+
+                                    <button  className="btn btn-primary">Detalles </button>
+                                </Link>
                               </div>
       </div>
     </>

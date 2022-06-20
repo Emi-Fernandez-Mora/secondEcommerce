@@ -3,8 +3,8 @@ import React from 'react'
 
 
 const ItemDetail = ({ productos }) => {
-
-
+ 
+    
     return (
         <>
             <div className="card" style={{width: "18rem"}}>
@@ -12,7 +12,7 @@ const ItemDetail = ({ productos }) => {
                               <div className="card-body">
                                 <h5 className="card-title">{`${productos.nombre} - ${productos.categoria}`}</h5>
                                 <p className="card-text">{`Llevate tu ${productos.nombre}, te llega mañana`}</p>
-                                <a href="#" className="btn btn-primary">Detalles del productos</a>
+                                <a href="#" className="btn btn-primary">ESTO ES EL DETALLE</a>
                               </div>
       </div>
         
