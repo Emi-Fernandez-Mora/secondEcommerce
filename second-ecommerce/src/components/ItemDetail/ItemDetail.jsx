@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import BtnAgregar from '../BtnAgregar/BtnAgregar'
+import BtnFinalizar from '../BtnFinalizar/BtnFinalizar'
+import ItemCount from '../ItemCount.js/ItemCount'
 
 
 
 const ItemDetail = ({ productos }) => {
- 
+
+    const [agrego, setAgrego] = useState(true)
+
+    const handleAgregar = () =>{
+      setAgrego(false)
+    }
+  
     
     return (
         <>
@@ -14,7 +23,24 @@ const ItemDetail = ({ productos }) => {
                                 <p className="card-text">{`Llevate tu ${productos.nombre}, te llega mañana`}</p>
                                 <a href="#" className="btn btn-primary">ESTO ES EL DETALLE</a>
                               </div>
-      </div>
+            </div>
+            
+            
+
+            {
+              agrego?
+                <div>
+                      <ItemCount stock ="10" initial = '1' />
+                      <BtnAgregar handleAgregar={handleAgregar} />
+                </div>
+              :
+              <BtnFinalizar />
+
+            }
+            
+                
+            
+
         
         </>
 
