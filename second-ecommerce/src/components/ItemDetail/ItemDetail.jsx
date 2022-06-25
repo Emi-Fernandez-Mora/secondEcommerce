@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import BtnAgregar from '../BtnAgregar/BtnAgregar'
+
 import BtnFinalizar from '../BtnFinalizar/BtnFinalizar'
 import ItemCount from '../ItemCount.js/ItemCount'
 
@@ -30,8 +30,8 @@ const ItemDetail = ({ productos }) => {
             {
               agrego?
                 <div>
-                      <ItemCount stock ="10" initial = '1' />
-                      <BtnAgregar handleAgregar={handleAgregar} />
+                      <ItemCount stock ="10" initial = '1' handleAgregar={handleAgregar} />
+                      
                 </div>
               :
               <BtnFinalizar />

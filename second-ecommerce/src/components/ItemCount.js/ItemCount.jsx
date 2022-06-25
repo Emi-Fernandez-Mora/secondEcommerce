@@ -2,7 +2,7 @@ import './ItemCount.css';
 import { useState} from 'react';
 
 
-export default function ItemCount({stock, initial}) {
+export default function ItemCount({stock, initial,handleAgregar}) {
 
     const [count, setCount] = useState(parseInt(initial));
 
@@ -23,6 +23,14 @@ export default function ItemCount({stock, initial}) {
                 <button onClick = {agregar} id='btnMas' className="mas"><ion-icon name="add-outline"></ion-icon></button>
             </div>
         </div>
+        <button className="btn btn-primary"
+            onClick={handleAgregar}
+
+        >
+
+                Agregar al carrito
+
+        </button>
     
     </>
   )
