@@ -2,7 +2,7 @@ import './ItemCount.css';
 import { useState} from 'react';
 
 
-export default function ItemCount({stock, initial,handleAgregar}) {
+export default function ItemCount({stock, initial,onAdd}) {
 
     const [count, setCount] = useState(parseInt(initial));
 
@@ -12,6 +12,11 @@ export default function ItemCount({stock, initial,handleAgregar}) {
     const restar = ()=>{
       count <= initial ? alert ('No puedes eliminar mas productos'): setCount(count - 1)
     }
+    const handlerAdd = ()=>{
+      onAdd(count);
+    }
+
+
 
            
   return (
@@ -24,7 +29,7 @@ export default function ItemCount({stock, initial,handleAgregar}) {
             </div>
         </div>
         <button className="btn btn-primary"
-            onClick={handleAgregar}
+            onClick={handlerAdd}
 
         >
 

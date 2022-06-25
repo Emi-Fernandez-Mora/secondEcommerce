@@ -9,8 +9,11 @@ const ItemDetail = ({ productos }) => {
 
     const [agrego, setAgrego] = useState(true)
 
-    const handleAgregar = () =>{
+
+    //maneja item detail y recibe el count
+    const onAdd = (count) =>{
       setAgrego(false)
+      console.log(count)
     }
   
     
@@ -28,13 +31,10 @@ const ItemDetail = ({ productos }) => {
             
 
             {
-              agrego?
-                <div>
-                      <ItemCount stock ="10" initial = '1' handleAgregar={handleAgregar} />
-                      
-                </div>
-              :
-              <BtnFinalizar />
+              agrego ?
+                      <ItemCount stock ="10" initial = '1' onAdd={onAdd} />
+                    :
+                      <BtnFinalizar />
 
             }
             
