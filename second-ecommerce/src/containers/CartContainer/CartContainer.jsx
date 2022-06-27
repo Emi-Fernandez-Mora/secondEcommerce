@@ -1,9 +1,10 @@
 import React from 'react'
+import Cart from '../../components/Cart/Cart'
 
 const CartContainer = () => {
   return (
     <>
-            <h1>Aca van a estar los productos agregados al carrito</h1>
+            <Cart />
 
     </>
   )
