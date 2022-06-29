@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from "react";
 import { createContext } from "react";
@@ -8,8 +9,20 @@ export const CartContext = createContext([]);
 export const useCartContext = () => useContext(CartContext)
 
 export const CartContextProvider = ({children}) => {
-
+    
     const [cart, setCart] = useState([]);
+
+    
+    const removeItem = (id) =>{
+        
+        const items = cart.filter((e)=>e.id !== id);
+
+       
+
+            setCart(items);
+        
+
+    }
     
 
     const addToCart =(item)=>{
@@ -23,8 +36,7 @@ export const CartContextProvider = ({children}) => {
 
            
        }
-       else{
-
+        else{
            setCart([...cart, item])
 
        } 
@@ -43,7 +55,8 @@ export const CartContextProvider = ({children}) => {
     value={
         {cart,
         addToCart,
-         vaciarCart
+         vaciarCart,
+         removeItem
          
         }}
     >

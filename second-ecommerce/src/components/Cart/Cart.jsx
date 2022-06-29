@@ -1,11 +1,13 @@
 import React from 'react'
 import { useCartContext } from '../../Context/cartContext'
+import CartItem from '../CartItem/CartItem';
+
 
 
 const Cart = () => {
 
     const { cart, vaciarCart } = useCartContext();
-    console.log(cart)
+   
     
     
   return (
@@ -14,10 +16,11 @@ const Cart = () => {
     
         
        
-          {  cart.map(i=>
-                <li key={i.id}>{i.nombre} {i.precio} {i.cantidad}</li>
+           {  cart.map(product=>
+                <CartItem key={product.id} product={product}/>
             )
-        }
+        } 
+
        <div>
         <button onClick={vaciarCart}>
             Vaciar carrito
