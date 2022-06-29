@@ -40,10 +40,7 @@ export const CartContextProvider = ({children}) => {
             
            const obj = cart.find((i)=>i.id === item.id);
            obj.cantidad += item.cantidad;
-
-           
-
-           
+                                  
        }
         else{
            setCart([...cart, item])
