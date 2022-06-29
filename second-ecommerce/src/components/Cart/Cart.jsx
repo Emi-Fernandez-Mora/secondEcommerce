@@ -8,7 +8,7 @@ const Cart = () => {
 
     const { cart, vaciarCart } = useCartContext();
    
-    
+    console.log('cart:', cart)    
     
   return (
 

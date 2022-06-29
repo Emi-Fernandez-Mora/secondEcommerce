@@ -17,22 +17,31 @@ export const CartContextProvider = ({children}) => {
         
         const items = cart.filter((e)=>e.id !== id);
 
-       
+             
 
-            setCart(items);
+        setCart(items);
+        
         
 
     }
     
 
+    const isInCart = (id) =>{
+
+        return cart.find((i)=>i.id === id);
+
+    }
+
     const addToCart =(item)=>{
         
-        let encontro = cart.find((i)=>i.id===item.id);
+        
+      
+       if(isInCart(item.id)) {
+            
+           const obj = cart.find((i)=>i.id === item.id);
+           obj.cantidad += item.cantidad;
 
-       if(encontro) {
-
-            let cantidadTotal = encontro.cantidad + item.cantidad;
-            setCart([...cart, encontro.cantidad = cantidadTotal])
+           
 
            
        }
