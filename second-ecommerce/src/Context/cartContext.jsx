@@ -11,18 +11,15 @@ export const useCartContext = () => useContext(CartContext)
 export const CartContextProvider = ({children}) => {
     
     const [cart, setCart] = useState([]);
+    const [canti, setCanti] = useState(0);
+    const [precioTotal , setPrecioTotal] = useState(0)
+    
 
     
     const removeItem = (id) =>{
         
         const items = cart.filter((e)=>e.id !== id);
-
-             
-
         setCart(items);
-        
-        
-
     }
     
 
@@ -32,29 +29,54 @@ export const CartContextProvider = ({children}) => {
 
     }
 
+    useEffect(()=>{
+        const total = cart.reduce((acc, actual)=> acc + actual.precio,0);
+        setPrecioTotal(total);
+
+        
+        
+    },[cart])
+
+    useEffect(()=>{
+        const totalCant = cart.reduce((acc,actual)=>acc + actual.cantidad,0)
+        setCanti(totalCant);
+        console.log('cant:',canti)
+    },[cart])
+    
+    
     const addToCart =(item)=>{
-        
-        
-      
+   
        if(isInCart(item.id)) {
             
            const obj = cart.find((i)=>i.id === item.id);
            obj.cantidad += item.cantidad;
+           obj.precio += item.precio;
+           
                                   
        }
         else{
-           setCart([...cart, item])
+           setCart([...cart, item]);
+           
+           item.precio = item.precio * item.cantidad;
 
        } 
        
-        
     }
+               
     
     
+    
+    
+    
+
     const vaciarCart = () => {
         setCart([])
     }
 
+    
+
+    
+    
 
   return (
     <CartContext.Provider 
@@ -62,7 +84,10 @@ export const CartContextProvider = ({children}) => {
         {cart,
         addToCart,
          vaciarCart,
-         removeItem
+         removeItem,
+        precioTotal,
+        canti,
+
          
         }}
     >

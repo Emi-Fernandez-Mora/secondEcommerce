@@ -14,6 +14,7 @@ export default function ItemListContainer({products}) {
   const  [productos, setProductos] = useState([]);
 
   const { categoriaId }= useParams()
+  const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
     if(categoriaId){
@@ -31,6 +32,7 @@ export default function ItemListContainer({products}) {
           setProductos(res)
         })
         .catch(console.log('error'))
+        .finally(()=>setLoading(false))
        
     }
     
@@ -39,7 +41,8 @@ export default function ItemListContainer({products}) {
   
   return (
     <>
-      <ItemList productos={productos}/>
+      {loading ? <h2>Cargando</h2>:
+      <ItemList productos={productos}/>}
       
       
       

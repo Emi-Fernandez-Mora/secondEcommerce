@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
   const  [productos, setProductos] = useState([]);  
   const { id } = useParams();      
   
-  
+  const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
     
@@ -19,14 +19,18 @@ const ItemDetailContainer = () => {
         setProductos(res)
       )
       .catch(console.log('error'))
+      .finally(()=>setLoading(false))
      
-      console.log(productos)
+      
     
   },[])
 
   return (
     <>
+      {
+        loading ? <h2>Cargando</h2>:
       <ItemDetail productos={productos} />
+      }
 
     </>
   )
