@@ -25,7 +25,8 @@ export const CartContextProvider = ({children}) => {
 
     const isInCart = (id) =>{
 
-        return cart.find((i)=>i.id === id);
+        cart.some((i)=>i.id == id);
+        console.log('id',id)
 
     }
 
@@ -45,7 +46,7 @@ export const CartContextProvider = ({children}) => {
     
     
     const addToCart =(item)=>{
-   
+            console.log('item.id',item.id)
        if(isInCart(item.id)) {
             
            const obj = cart.find((i)=>i.id === item.id);

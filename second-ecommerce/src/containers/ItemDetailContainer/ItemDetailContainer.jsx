@@ -18,11 +18,16 @@ const ItemDetailContainer = () => {
 useEffect(()=>{ 
 
     const db = getFirestore();
-    const queryItem = doc(db, 'productos', 'pydrP9136Gqir8TJSgC8');
-    getDoc(queryItem)
-      .then(resp=>setProductos({id: resp.id, ...resp.data}))
-      .catch(err=>console.log(err))
-      
+    const queryItem = doc(db, 'productos', id);
+
+    if(id){
+
+      getDoc(queryItem)
+        
+        .then(resp=>setProductos({id: resp.id, ...resp.data()}))
+        .catch(err=>console.log(err))
+        
+    }
 
   },[bool])
   
@@ -42,10 +47,10 @@ useEffect(()=>{
 
   return (
     <>
-      {
-        loading ? <h2>Cargando</h2>:
+      {/* {
+        loading ? <h2>Cargando</h2>: */}
       <ItemDetail productos={productos} />
-      }
+      
 
     </>
   )
