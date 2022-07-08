@@ -41,12 +41,12 @@ export const CartContextProvider = ({children}) => {
     useEffect(()=>{
         const totalCant = cart.reduce((acc,actual)=>acc + actual.cantidad,0)
         setCanti(totalCant);
-        console.log('cant:',canti)
+        
     },[cart])
     
     
     const addToCart =(item)=>{
-            console.log('item.id',item.id)
+            
        if(isInCart(item.id)) {
             
            const obj = cart.find((i)=>i.id === item.id);
