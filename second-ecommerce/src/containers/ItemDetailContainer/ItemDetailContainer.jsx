@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
-import { getFetch } from "../../helpers/getFetch";
 import { useParams} from "react-router-dom";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 
@@ -33,17 +32,7 @@ useEffect(()=>{
   
 
 
-  // useEffect(()=>{
-    
-  //     getFetch(id).then((res)=>
-  //       setProductos(res)
-  //     )
-  //     .catch(console.log('error'))
-  //     .finally(()=>setLoading(false))
-     
-      
-    
-  // },[])
+  
 
   return (
     <>
