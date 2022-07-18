@@ -2,74 +2,22 @@ import { addDoc, collection, doc, documentId, getDocs, getFirestore, query, upda
 import React from 'react'
 import { useCartContext } from '../../Context/cartContext';
 import { useState } from 'react';
+import { useFormContext } from '../../Context/formContext';
+import Loading from '../Loading/Loading';
 
 
-const Form = ({siPago}) => {
+const Form = () => {
 
-    const { cart, precioTotal } = useCartContext();
-    const [ordenId, setOrdenId] = useState('');
-    const [nombre, setNombre] = useState('');
-    const [mail, setMail] = useState('');
-    const [telefono, setTelefono] = useState('');
-    
-    
-     const handlerPago =  async () =>{
-      siPago(true)
-    }
-    
+  const { generarOrden,setTelefono,setMail,setNombre,ordenId,   nombre,  mail,telefono } = useFormContext();
 
-    async function generarOrden(e,) {
-        console.log('entro esta')
-        e.preventDefault();
-        let orden = {};
-        
-        
-        
-          
-        orden.buyer = { name: nombre, email: mail, tel: telefono }
-        orden.precio = precioTotal;
-                
-        orden.items = cart.map(cartItem => {
-          const id = cartItem.id;
-          const nombre = cartItem.nombre;
-          const precio = cartItem.precio 
     
-          return { id, nombre, precio }
-        })
-    
-        
-    
-        const db = getFirestore();
-        const orderCollection = collection(db, 'ordenes');
-        addDoc(orderCollection, orden)
-          .then(resp => setOrdenId(resp.id))
-    
-        const queryCollectionStock = collection(db, 'productos');
-        const queryActualizarStock = await query(
-          queryCollectionStock,
-          where(documentId(), 'in', cart.map(it => it.id))
-        );
-        const batch = writeBatch(db)
-    
-        await getDocs(queryActualizarStock)
-          .then(resp => resp.docs.forEach(resp => batch.update(resp.ref, {
-            stock: resp.data().stock - cart.find(item => item.id === resp.id).cantidad
-          })))
-          .finally(() => console.log('entro'))
-        batch.commit()
-
-        
-      }
-
-     const llamarTodos =(e)=>{
-      generarOrden(e);
-      handlerPago()
-     }
-
-
+  const [loading, setLoading] = useState(true)
+  setTimeout(()=>setLoading(false),1300)
 
   return (
-    <>
+    <>  
+
+        {loading? <Loading/>:
           <form>
               <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">Nombre completo</label>
@@ -86,10 +34,10 @@ const Form = ({siPago}) => {
                   <input type="text" className="form-control" id="inputTelefono" value={telefono} onChange={((e)=>setTelefono(e.target.value))} />
               </div>
               
-              <button onClick={llamarTodos}>Pagar  </button>
+              <button className='btn btn-primary' onClick={generarOrden}>Pagar  </button>
           </form>
-
-          <h1>Tu ID del pedido es {ordenId}</h1>
+}
+          
           
       </>
   )

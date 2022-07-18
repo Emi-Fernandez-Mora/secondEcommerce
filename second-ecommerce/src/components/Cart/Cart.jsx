@@ -13,6 +13,8 @@ const Cart = () => {
 
   const { cart, vaciarCart, precioTotal } = useCartContext();
 
+  
+
 
 
   return (

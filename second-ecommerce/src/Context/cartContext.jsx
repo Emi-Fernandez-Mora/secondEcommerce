@@ -8,94 +8,88 @@ import { createContext } from "react";
 export const CartContext = createContext([]);
 export const useCartContext = () => useContext(CartContext)
 
-export const CartContextProvider = ({children}) => {
-    
+export const CartContextProvider = ({ children }) => {
+
     const [cart, setCart] = useState([]);
     const [canti, setCanti] = useState(0);
-    const [precioTotal , setPrecioTotal] = useState(0)
-    
+    const [precioTotal, setPrecioTotal] = useState(0)
 
-    
-    const removeItem = (id) =>{
-        
-        const items = cart.filter((e)=>e.id !== id);
+
+    const removeItem = (id) => {
+
+        const items = cart.filter((e) => e.id !== id);
         setCart(items);
     }
-    
 
-    const isInCart = (id) =>{
+    const actualizar = () =>{
+        const totalCant = cart.reduce((acc, actual) => acc + actual.cantidad, 0)
+        setCanti(totalCant);
 
-        cart.some((i)=>i.id == id);
-        
-
-    }
-
-    useEffect(()=>{
-        const total = cart.reduce((acc, actual)=> acc + actual.precio,0);
+        const total = cart.reduce((acc, actual) => acc + actual.precio, 0);
         setPrecioTotal(total);
 
-        
-        
-    },[cart])
-
-    useEffect(()=>{
-        const totalCant = cart.reduce((acc,actual)=>acc + actual.cantidad,0)
-        setCanti(totalCant);
-        
-    },[cart])
-    
-    
-    const addToCart =(item)=>{
-            
-       if(isInCart(item.id)) {
-            
-           const obj = cart.find((i)=>i.id === item.id);
-           obj.cantidad += item.cantidad;
-           obj.precio += item.precio;
-           
-                                  
-       }
-        else{
-           setCart([...cart, item]);
-           
-           item.precio = item.precio * item.cantidad;
-
-       } 
-       
     }
-               
+
+    useEffect(() => {
+        actualizar();
+
+    }, [cart])
+
     
+
     
-    
-    
-    
+
+    const addToCart = (item) => {
+              
+        
+        if (cart.find((i)=>i.id === item.id)) {
+            
+
+            const obj = cart.find((i) => i.id === item.id);
+            obj.cantidad += item.cantidad;
+            obj.precio += item.precio * item.cantidad;
+            actualizar()
+            console.log('cantidad:',obj.cantidad, 'preico', obj.precio)
+            
+
+
+        }
+        else {
+
+            setCart([...cart, item]);
+
+            item.precio = item.precio * item.cantidad;
+            actualizar();
+            
+
+        }
+
+    }
 
     const vaciarCart = () => {
         setCart([])
     }
 
-    
 
-    
-    
+    return (
+        <CartContext.Provider
+            value={
+                {
+                    cart,
+                    addToCart,
+                    vaciarCart,
+                    removeItem,
+                    precioTotal,
+                    canti,
+                    
 
-  return (
-    <CartContext.Provider 
-    value={
-        {cart,
-        addToCart,
-         vaciarCart,
-         removeItem,
-        precioTotal,
-        canti,
 
-         
-        }}
-    >
+                }}
+        >
 
-        {children}
+            {children}
 
-    </CartContext.Provider>
-  )
+        </CartContext.Provider>
+    )
 }
 

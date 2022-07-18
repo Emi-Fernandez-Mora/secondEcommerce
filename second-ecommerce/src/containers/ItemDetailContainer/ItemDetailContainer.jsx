@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import { useParams} from "react-router-dom";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import Loading from "../../components/Loading/Loading";
 
 const ItemDetailContainer = () => {
 
@@ -14,6 +15,7 @@ const ItemDetailContainer = () => {
   
   const [loading, setLoading] = useState(true)
 
+  
 useEffect(()=>{ 
 
     const db = getFirestore();
@@ -25,6 +27,9 @@ useEffect(()=>{
         
         .then(resp=>setProductos({id: resp.id, ...resp.data()}))
         .catch(err=>console.log(err))
+        .finally( 
+          setTimeout(()=>setLoading(false),1300)
+        )
         
     }
 
@@ -36,9 +41,9 @@ useEffect(()=>{
 
   return (
     <>
-      {/* {
-        loading ? <h2>Cargando</h2>: */}
-      <ItemDetail productos={productos} />
+      {
+        loading ? <Loading/>: 
+      <ItemDetail productos={productos} />}
       
 
     </>

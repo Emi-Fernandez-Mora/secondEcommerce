@@ -13,11 +13,13 @@ const ItemDetail = ({ productos }) => {
     const [agrego, setAgrego] = useState(true)
 
 
-    //maneja item detail y recibe el count
+    //maneja item detail y recibe el contu
     const onAdd = (count) =>{
       setAgrego(false);      
       
       addToCart({...productos, cantidad:count});
+      
+      
     }
     
     
