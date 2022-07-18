@@ -20,6 +20,7 @@ function App() {
           
           <BrowserRouter>
 
+    
             <NavBar />
 
             <Routes>

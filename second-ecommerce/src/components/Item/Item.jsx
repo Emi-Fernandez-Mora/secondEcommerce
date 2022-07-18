@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './Item.css'
 
 function Item({prod}) {
 
@@ -11,6 +12,7 @@ function Item({prod}) {
                               <div className="card-body">
                                 <h5 className="card-title">{`${prod.nombre} - ${prod.categoria}`}</h5>
                                 <p className="card-text">{`Llevate tu ${prod.nombre}, te llega mañana`}</p>
+                                <div>${prod.precio}</div>
                                 
                                 <Link to={`/detalle/${prod.id}`}>
 

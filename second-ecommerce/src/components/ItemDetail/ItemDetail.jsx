@@ -27,11 +27,12 @@ const ItemDetail = ({ productos }) => {
     return (
         <>
             <div className="card" style={{width: "18rem"}}>
-                              <img src="" className="card-img-top" alt=""/>
+                              <img src={productos.img} className="card-img-top" alt=""/>
                                 <div className="card-body">
                                     <h5 className="card-title">{`${productos.nombre} - ${productos.categoria}`}</h5>
                                     <p className="card-text">{`Llevate tu ${productos.nombre}, te llega mañana`}</p>
-                                    <a href="#" className="btn btn-primary">ESTO ES EL DETALLE</a>
+                                    <p>${productos.precio}</p>
+                                    
                                 </div>
             </div>
             
@@ -39,7 +40,7 @@ const ItemDetail = ({ productos }) => {
 
             {
               agrego ?
-                      <ItemCount stock ="10" initial = '1' onAdd={onAdd} />
+                      <ItemCount stock ={productos.stock} initial = '1' onAdd={onAdd} />
                     :
                       <BtnFinalizar />
 

@@ -1,7 +1,4 @@
-import { addDoc, collection, doc, documentId, getDocs, getFirestore, query, updateDoc, where, writeBatch } from 'firebase/firestore';
 import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useCartContext } from '../../Context/cartContext'
 import CartItem from '../CartItem/CartItem';
@@ -12,8 +9,6 @@ const Cart = () => {
   const { id } = useParams();
 
   const { cart, vaciarCart, precioTotal } = useCartContext();
-
-  
 
 
 
@@ -48,7 +43,7 @@ const Cart = () => {
                 Ir a pagar
               </button>
             </Link>
-            
+
           </div>
 
         </>

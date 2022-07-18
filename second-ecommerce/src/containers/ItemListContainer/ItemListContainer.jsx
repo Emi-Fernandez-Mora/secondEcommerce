@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ItemList from "../../components/ItemList/ItemList";
 import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import Loading from "../../components/Loading/Loading";
+import './ItemListContainer.css';
 
 
 
@@ -41,7 +42,7 @@ export default function ItemListContainer({ product }) {
 
 
   return (
-    <>
+    <div className="container">
       {
         loading ? 
         <Loading/>:
@@ -50,6 +51,6 @@ export default function ItemListContainer({ product }) {
 
 
 
-    </>
+    </div>
   )
 }

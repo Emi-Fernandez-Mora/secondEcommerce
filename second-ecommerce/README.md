@@ -1,3 +1,29 @@
+# Second Ecommerce
+
+Este proyecto simula un ecommerce desarrollado con React, utilizando firebase para gestionar el stock. No esta enfocado en lo estético, sino en aprender la lógica de React, con el fin de eficientizar y componentizar el código para un renderizado mas eficiente.
+
+## Dependencias
+
+Las dependencias utilizadas y sus respectivas versiones son las siguientes:
+
+-"@testing-library/jest-dom": "^5.16.4",
+-"@testing-library/react": "^13.3.0",
+-"@testing-library/user-event": "^13.5.0",
+-"bootstrap": "^5.1.3",
+-"firebase": "^9.8.4",
+-"materialize-css": "^1.0.0-rc.2",
+-"react": "^18.1.0",
+-"react-bootstrap": "^2.4.0",
+-"react-dom": "^18.1.0",
+-"react-router-dom": "^6.3.0",
+-"react-scripts": "5.0.1",
+-"web-vitals": "^2.1.4"
+
+### Autor
+
+Emiliano Fernandez Mora
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

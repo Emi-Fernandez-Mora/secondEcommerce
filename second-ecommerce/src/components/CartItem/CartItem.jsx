@@ -1,4 +1,3 @@
-import React, { memo } from 'react'
 import { useCartContext } from '../../Context/cartContext';
 
 const CartItem = 
@@ -11,15 +10,19 @@ const CartItem =
   
   
     return (
-      <ul>
-        
+      <div className='d-flex inline mb-5'>
+          <img src={product.img} alt="" />
+          <ul>
+
           <li>Nombre:{product.nombre}</li>
           <li>Precio:{product.precio}</li>
           <li>Cantidad:{product.cantidad}</li>
           <button className='btn btn-primary' onClick={()=> removeItem(product.id)}>Eliminar producto</button>
-  
-  
-      </ul>
+
+
+          </ul>
+      </div>
+      
     )
   }
   

@@ -10,7 +10,7 @@ const ItemDetailContainer = () => {
   
 
   const  [productos, setProductos] = useState([]); 
-  const [bool, setBool] = useState(true); 
+  
   const { id } = useParams();      
   
   const [loading, setLoading] = useState(true)
@@ -33,7 +33,7 @@ useEffect(()=>{
         
     }
 
-  },[bool])
+  },[])
   
 
 
