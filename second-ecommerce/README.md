@@ -2,6 +2,14 @@
 
 Este proyecto simula un ecommerce desarrollado con React, utilizando firebase para gestionar el stock. No esta enfocado en lo estético, sino en aprender la lógica de React, con el fin de eficientizar y componentizar el código para un renderizado mas eficiente.
 
+## Link 
+
+https://resilient-banoffee-e8b7d3.netlify.app/
+
+## Libreraia
+
+React
+
 ## Dependencias
 
 Las dependencias utilizadas y sus respectivas versiones son las siguientes:
@@ -19,7 +27,7 @@ Las dependencias utilizadas y sus respectivas versiones son las siguientes:
 -"react-scripts": "5.0.1",
 -"web-vitals": "^2.1.4"
 
-### Autor
+## Autor
 
 Emiliano Fernandez Mora
 
